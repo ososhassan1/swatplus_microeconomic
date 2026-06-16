@@ -174,7 +174,11 @@ find_package(Python3 QUIET)
 set(spcheck "${PROJECT_SOURCE_DIR}/test/spcheck.py")
 set(exe_path "${PROJECT_BINARY_DIR}/${SWATPLUS_EXE}")
 set(test_dir "${PROJECT_BINARY_DIR}/data")
-set(ref_dir  "${PROJECT_SOURCE_DIR}/data")
+if(EXISTS "${PROJECT_SOURCE_DIR}/refdata")
+    set(ref_dir  "${PROJECT_SOURCE_DIR}/refdata")
+else()
+    set(ref_dir  "${PROJECT_SOURCE_DIR}/data")
+endif()
 
 # error tolerances
 set(rerr "0.01")
